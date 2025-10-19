@@ -6,6 +6,8 @@
 #include "Characters/CombatProjectBaseCharacter.h"
 #include "CombatProjectHeroCharacter.generated.h"
 
+class UCameraComponent;
+class USpringArmComponent;
 /**
  * 
  */
@@ -14,6 +16,18 @@ class COMBATPROJECT_API ACombatProjectHeroCharacter : public ACombatProjectBaseC
 {
 	GENERATED_BODY()
 
+public:
+	ACombatProjectHeroCharacter();
+	
 protected:
 	virtual void BeginPlay() override;
+
+private:
+#pragma region Components
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	USpringArmComponent* CameraBoom;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UCameraComponent* FollowCamera;
+#pragma endregion 
 };
